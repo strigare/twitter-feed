@@ -48,13 +48,13 @@ $(document).ready(function () {
       //console.log(feeds);
       var feedHTML = generateFeedHtml(feeds); 
 
-      if(shouldAppend){
+      if(shouldPrepend){
         $('#twitter-feed #content').prepend(feedHTML);
       } else {
         $('#twitter-feed #content').html(feedHTML);
       }
 
-      //setTimeout(function(){loadFeed(true)}, 60000);
+      setTimeout(function(){loadFeed(true)}, 60000);
    }});
   }
 
