@@ -24,9 +24,9 @@ $(document).ready(function () {
   $('#twitter-feed #twitter-header').html(headerHTML);
 	$('#twitter-feed #content').html(loadingHTML);
 
-  loadFeed();  
+  loadFeed(false);  
 
-  function loadFeed(){
+  function loadFeed(shouldPrepend){
 
     var parameters = {
       screen_name: twitterprofile,
@@ -36,11 +36,11 @@ $(document).ready(function () {
     };
 
     if(id_str){
-      parameters.max_id = id_str;
+      parameters.since_id = id_str;
     }
 
     $.ajax({
-    url: 'http://api.twitter.com/1/statuses/user_timeline.json/',
+    url: 'http://api.twitter.com/1/statuses/user_timeline.json/' + '#'+new Date(),
     type: 'GET',
     dataType: 'jsonp',
     data: parameters,
@@ -48,8 +48,13 @@ $(document).ready(function () {
       //console.log(feeds);
       var feedHTML = generateFeedHtml(feeds); 
 
+      if(shouldAppend){
+        $('#twitter-feed #content').prepend(feedHTML);
+      } else {
+        $('#twitter-feed #content').html(feedHTML);
+      }
 
-     $('#twitter-feed #content').html(feedHTML);
+      //setTimeout(function(){loadFeed(true)}, 60000);
    }});
   }
 
@@ -64,6 +69,10 @@ $(document).ready(function () {
       var status = feeds[i].text; 
       var isaretweet = false;
       var tweetid = feeds[i].id_str;
+
+      if(i == 0){
+        id_str = tweetid;
+      }
 
       //If the tweet has been retweeted, get the profile pic of the tweeter
       if(typeof feeds[i].retweeted_status != 'undefined'){
