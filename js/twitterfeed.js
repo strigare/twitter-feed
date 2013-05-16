@@ -1,10 +1,11 @@
 $(document).ready(function () {
-  var displaylimit = 3;
+  var displaylimit = 6;
   var twitterprofile = "ignacio_parada";
   var screenname = "Ignacio Parada";
   var showretweets = true;
   var showtweetlinks = true;
   var showprofilepic = true;
+  var id_str = null;
 
   var headerHTML = '';
   var loadingHTML = '';
@@ -23,23 +24,28 @@ $(document).ready(function () {
   $('#twitter-feed #twitter-header').html(headerHTML);
 	$('#twitter-feed #content').html(loadingHTML);
 
-  $.ajax({
+  loadFeed();  
+
+  function loadFeed(){
+
+    $.ajax({
     url: 'http://api.twitter.com/1/statuses/user_timeline.json/',
     type: 'GET',
     dataType: 'jsonp',
     data: {
       screen_name: twitterprofile,
       include_rts: true,
-      count: 3,
+      count: 6,
       include_entities: true
     },
     success: function(feeds) {   
-		  //console.log(feeds);
+      //console.log(feeds);
       var feedHTML = generateFeedHtml(feeds); 
 
 
      $('#twitter-feed #content').html(feedHTML);
    }});
+  }
 
     function generateFeedHtml(feeds){
       var feedHTML = '';
@@ -137,5 +143,4 @@ $(document).ready(function () {
         return shortdate;
       }
     }
-
   });
