@@ -20,7 +20,8 @@ $(document).ready(function () {
                   '<img src="images/ajax-loader.gif" width="32" height="32" alt="tweet loader" />'+
                  '</div>';
 	
-	$('#twitter-feed').html(headerHTML + loadingHTML);
+  $('#twitter-feed #twitter-header').html(headerHTML);
+	$('#twitter-feed #content').html(loadingHTML);
 
   $.ajax({
     url: 'http://api.twitter.com/1/statuses/user_timeline.json/',
@@ -37,7 +38,7 @@ $(document).ready(function () {
       var feedHTML = generateFeedHtml(feeds); 
 
 
-     $('#twitter-feed').html(feedHTML);
+     $('#twitter-feed #content').html(feedHTML);
    }});
 
     function generateFeedHtml(feeds){
@@ -64,10 +65,6 @@ $(document).ready(function () {
           if (showtweetlinks == true) {
            status = addlinks(status);
          }
-
-            if (displayCounter == 0) {
-              feedHTML += headerHTML;
-            }
 
             feedHTML += '<div class="twitter-article">';                  
             feedHTML +=   '<div class="twitter-pic">';
