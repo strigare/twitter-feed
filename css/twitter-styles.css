@@ -4,7 +4,7 @@ body {
 }
 
 #twitter-feed {
-	width:258px;
+	width:270px;
 	margin:auto;
 	font-family: Arial, Helvetica, sans-serif;
 	margin-top:60px;
@@ -15,7 +15,6 @@ body {
 	overflow:auto;
 }
 
-
 #twitter-feed h1 {
 	color:#5F5F5F;
 	margin:0px;
@@ -25,16 +24,20 @@ body {
 }
 
 .twitter-article, #loading-container {
-	width:258px;
+	width: 100%;
 	border-top:1px dotted #CCC;
 	float:left;	
 	padding:8px 0px 8px 0px;
 }
 
-
 #loading-container {
 	padding:16px 0px 16px 0px;
 	text-align:center;	
+}
+
+#loading-container img{
+	width:32px ;
+	height: 32px;	
 }
 
 #twitter-bird {
@@ -45,7 +48,6 @@ body {
 #username span{
 	font-size:13px
 }
-
 
 .twitter-pic {
 	float:left;
@@ -75,12 +77,11 @@ body {
 }
 
 .twitter-text {
-	width:204px;
+	width:80%;
 	float:left;
 	font-size:11px;
 	padding-left: 11px;
 }
-
 
 .tweet-time {
 	font-size:10px;
@@ -98,6 +99,11 @@ body {
 .tweetprofilelink a {
 	color:#444;
 }
+.tweetprofilelink .at_username{
+	margin-left: 3px;
+	margin-bottom: 4px;
+}
+
 .tweetprofilelink a:hover {
 	color:#444;
 }

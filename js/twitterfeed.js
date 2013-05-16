@@ -17,7 +17,7 @@ $(document).ready(function () {
                     twitterprofile+'" >@'+twitterprofile+'</a></span></h1>';
 	
   loadingHTML += '<div id="loading-container">'+
-                  '<img src="images/ajax-loader.gif" width="32" height="32" alt="tweet loader" />'+
+                  '<img src="images/ajax-loader.gif" alt="tweet loader" />'+
                  '</div>';
 	
   $('#twitter-feed #twitter-header').html(headerHTML);
@@ -79,7 +79,7 @@ $(document).ready(function () {
             feedHTML +=         '<strong>';
             feedHTML +=           '<a href="https://twitter.com/'+tweetusername+'" >'+tweetscreenname+'</a>';
             feedHTML +=         '</strong>';
-            feedHTML +=         '<a href="https://twitter.com/'+tweetusername+'" >@'+tweetusername+'</a>';
+            feedHTML +=         '<a class="at_username" href="https://twitter.com/'+tweetusername+'" >@'+tweetusername+'</a>';
             feedHTML +=       '</span>';
             feedHTML +=       '<span class="tweet-time">';
             feedHTML +=         '<a href="https://twitter.com/'+tweetusername+'/status/'+tweetid+'">'+
